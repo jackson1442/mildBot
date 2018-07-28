@@ -60,4 +60,4 @@ while True:
             print(com + c.permalink)
         print('Recording finished!\n')
     except: traceback.print_exc()
-    time.sleep(30)
+    time.sleep(300)
