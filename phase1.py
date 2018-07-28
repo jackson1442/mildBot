@@ -13,16 +13,6 @@ else:
 while True:
     try:
         print('Recording strikes..')
-#        for c in r.redditor('RocketLL').comments.new():
-#            if c.subreddit != subbie or not c.body.startswith('!r'): continue
-#            if c.removed: break
-#            n = ''
-#            for i in re.finditer('[1-6]', c.body): n += f'/{i.group()}'
-#            p = r.submission(c.parent_id[3:])
-#            p.mod.remove()
-#            p.mod.flair(f'Removed: Rule {n[1:]}')
-#            c.mod.remove()
-#            print(f'{com}{c.permalink}')
         for l in r.subreddit(subbie).mod.log(action='editflair'):
             if not l.target_fullname.startswith('t3_'): continue
             p = r.submission(l.target_fullname[3:])
@@ -69,19 +59,5 @@ while True:
             c.disable_inbox_replies()
             print(com + c.permalink)
         print('Recording finished!\n')
-
-#        print('Checking reposts..')
-#        for p in r.subreddit(subbie).top('hour'):
-#            kd = f'https://karmadecay.com/comments/{p.id}'
-#            rq = str(requests.get(kd, headers=headers).content).split('ess similar images')[0]
-#            if '   Found ' in rq:
-#                for i in re.finditer('\]\(http://w.*?/comments/(.*?)/', rq):
-#                    if r.submission(i.group(1)).created_utc > p.created_utc: continue
-#                    n = re.search('   Found (.*?) very', rq).group(1)
-#                    p.report(kd)
-#                    print(kd)
-#                    break
-#            p.hide()
-#        print('Checking finished!\n')
     except: traceback.print_exc()
     time.sleep(30)
